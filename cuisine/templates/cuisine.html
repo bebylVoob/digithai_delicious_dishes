@@ -1,0 +1,41 @@
+{% include 'head.html' %}
+{% load static %}
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-dark bg-dark-gray bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/cuisine/">Digithai cuisine</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                        <a class="nav-link" href="/admin/cuisine/">Add more</a>
+                </li>
+                {% for cuisine in cuisine_list %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="/cuisine/?cuisine={{cuisine}}">{{ cuisine }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+      </div>
+    </nav>
+    {% if cuisine %}
+        {% for cuisine_dishes in cuisine_dict %}
+            <div class="row">
+              <div class="leftcolumn" style="text-align: center">
+                <div class="card" style="text-align: center">
+                  <div class="fakeimg" style="height:200px;">
+                      <img src= {{ cuisine_dishes.image.url }} width="200" height="200"/>
+                  </div><br><br><br>
+                </div>
+              </div>
+                <div class="rigthcolumn">
+                    <article>
+                      <h2>{{ cuisine_dishes.name }}</h2>
+                      <p>{{ cuisine_dishes.desc }}</p>
+                    </article>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>

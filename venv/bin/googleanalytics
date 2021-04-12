@@ -1,0 +1,6 @@
+#!/home/babylvoob/Desktop/project/Project_jade/digithai_delicious_dishes/venv/bin/python
+
+from googleanalytics.commands import cli
+
+if __name__ == '__main__':
+    cli()
